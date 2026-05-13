@@ -1079,3 +1079,43 @@ h1 span { color: hsl(var(--hue), 100%, 74%); text-shadow: 0 0 32px hsla(var(--hu
     background: rgba(0,0,0,.72);
   }
 }
+
+/* =========================
+   STATIC MOBILE BACKGROUND
+   iPhone Safari Performance Fix
+========================= */
+
+@media (max-width: 850px) {
+
+  .network-canvas,
+  .cursor-ring,
+  .cursor-glow,
+  .spotlight-layer {
+    display: none !important;
+  }
+
+  body::before {
+    opacity: .9;
+    background:
+      linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+      radial-gradient(circle at 20% 20%, hsla(var(--hue),100%,60%,.16), transparent 32%),
+      radial-gradient(circle at 80% 30%, rgba(0,153,255,.12), transparent 34%),
+      radial-gradient(circle at 50% 80%, rgba(255,0,140,.08), transparent 40%),
+      linear-gradient(180deg, #05070b 0%, #090d16 100%);
+    background-size:
+      34px 34px,
+      34px 34px,
+      auto,
+      auto,
+      auto,
+      auto;
+    background-attachment: scroll;
+  }
+
+  body::after {
+    opacity: .4;
+    filter: blur(90px);
+  }
+
+}
