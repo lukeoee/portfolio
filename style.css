@@ -503,3 +503,80 @@ h1 span { color: hsl(var(--hue), 100%, 74%); text-shadow: 0 0 32px hsla(var(--hu
   min-height: 430px;
   object-fit: cover;
 }
+
+.solution-logo-wrap {
+  margin-top: 1.5rem;
+  width: min(260px, 100%);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at center, hsla(var(--hue), 100%, 65%, .20), transparent 58%),
+    rgba(255,255,255,.045);
+  box-shadow:
+    0 28px 90px rgba(0,0,0,.44),
+    0 0 42px hsla(var(--hue), 90%, 58%, .22),
+    inset 0 1px 0 rgba(255,255,255,.08);
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+
+.solution-logo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    hsla(var(--hue), 100%, 70%, .35),
+    transparent,
+    rgba(6,182,212,.28),
+    transparent
+  );
+  animation: solutionLogoSpin 7s linear infinite;
+}
+
+.solution-logo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: rgba(5, 7, 11, .72);
+}
+
+.solution-logo {
+  position: relative;
+  z-index: 1;
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  filter:
+    drop-shadow(0 0 18px hsla(var(--hue), 100%, 70%, .55))
+    drop-shadow(0 0 32px rgba(6,182,212,.28));
+  animation: solutionLogoFloat 3.6s ease-in-out infinite;
+}
+
+@keyframes solutionLogoSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes solutionLogoFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-8px) scale(1.035);
+  }
+}
