@@ -87,6 +87,11 @@
     </div>
   </footer>
 
+
+  <div class="lightbox" id="lightbox">
+    <img id="lightboxImage" src="" alt="">
+  </div>
+
   <script src="script.js"></script>
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -114,13 +119,67 @@
     document.querySelector("#detailTech").innerHTML = (project.tech || []).map(item => `<span>${item}</span>`).join("");
 
     const gallery = project.gallery && project.gallery.length ? project.gallery : [project.image, "", ""].filter(Boolean);
-    document.querySelector("#detailGallery").innerHTML = gallery.length
-      ? gallery.map(src => `<img src="${src}" alt="${project.title} Screenshot">`).join("")
-      : `
-        <div class="gallery-placeholder">Bild 1 später einsetzen</div>
-        <div class="gallery-placeholder">Bild 2 später einsetzen</div>
-        <div class="gallery-placeholder">Bild 3 später einsetzen</div>
-      `;
+
+    document.querySelector("#detailGallery").innerHTML = project.beforeAfter
+      ? project.beforeAfter.map((slider, index) => `
+        <div class="before-after-slider">
+          <img class="before-img" src="${slider.before}" alt="Vorher">
+          
+          <div class="after-wrap">
+            <img class="after-img" src="${slider.after}" alt="Nachher">
+          </div>
+
+          <input class="ba-range" type="range" min="0" max="100" value="50">
+
+          <div class="ba-line">
+            <span class="ba-handle">↔</span>
+          </div>
+
+          <span class="ba-label ba-before">Vorher</span>
+          <span class="ba-label ba-after">Nachher</span>
+        </div>
+      `).join("")
+      : gallery.length
+        ? gallery.map(src => `<img src="${src}" alt="${project.title} Screenshot">`).join("")
+        : `
+          <div class="gallery-placeholder">Bild 1 später einsetzen</div>
+          <div class="gallery-placeholder">Bild 2 später einsetzen</div>
+          <div class="gallery-placeholder">Bild 3 später einsetzen</div>
+        `;
+
+    document.querySelectorAll(".before-after-slider").forEach(beforeAfterSlider => {
+      const range = beforeAfterSlider.querySelector(".ba-range");
+      const afterWrap = beforeAfterSlider.querySelector(".after-wrap");
+      const line = beforeAfterSlider.querySelector(".ba-line");
+
+      function updateBeforeAfter(value) {
+        afterWrap.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+        line.style.left = `${value}%`;
+      }
+
+      range.addEventListener("input", event => {
+        updateBeforeAfter(event.target.value);
+      });
+
+      updateBeforeAfter(50);
+    });
+
+    const lightbox = document.querySelector("#lightbox");
+    const lightboxImage = document.querySelector("#lightboxImage");
+
+    if (lightbox && lightboxImage) {
+      document.querySelectorAll("#detailGallery img").forEach(img => {
+        img.addEventListener("click", () => {
+          if (img.closest(".before-after-slider")) return;
+          lightbox.classList.add("active");
+          lightboxImage.src = img.src;
+        });
+      });
+
+      lightbox.addEventListener("click", () => {
+        lightbox.classList.remove("active");
+      });
+    }
 
     attachInteractiveGlow();
   </script>

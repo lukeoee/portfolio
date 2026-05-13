@@ -252,8 +252,25 @@ const projects = [
     longDescription: "Hier kannst du später eine ausführliche Projektbeschreibung eintragen. Erkläre, was das Projekt besonders macht, welche Bereiche verändert wurden, welche Features enthalten sind und für wen das Mapping gedacht ist.",
     tech: ["3ds Max", "Codewalker", "YTYP Creator", "OpenIV", "Paint.NET", "Photoshop"],
     features: ["Begehbare Gebäude", "Anpassbare Farben", "Interior & Exterior", "Optimiert für FiveM"],
-    image: "",
-    gallery: [],
+    beforeAfter: [
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      },
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      },
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      }
+    ],
+    image: "images/coming-soon_before.png",
+    gallery: ["images/coming-soon_after.png",
+              "images/coming-soon_before.png",
+              "images/coming-soon_after.png"
+    ],
     liveUrl: "project.html?id=changeable-hood-mlo",
     repoUrl: "#",
     primaryButton: "Projekt ansehen",
@@ -270,8 +287,25 @@ const projects = [
     longDescription: "Eine vollständig überarbeitete Weihnachtsmap für die gesamte GTA V Map mit individuell anpassbaren LED-Beleuchtungen, einem eigenen Weihnachtsbaum sowie detaillierten Winter-Verfeinerungen wie schneebedeckten Ampeln und Straßenschildern, vereisten Wasserflächen und vielen weiteren atmosphärischen Features.",
     tech: ["3ds Max", "Codewalker", "YTYP Creator", "OpenIV", "Paint.NET"],
     features: ["Über gesamte GTAV Map", "Anpassbare Farben", "Vereiste Flächen", "Optimiert für FiveM"],
-    image: "",
-    gallery: [],
+    beforeAfter: [
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      },
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      },
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      }
+    ],
+    image: "images/coming-soon_before.png",
+    gallery: ["images/coming-soon_after.png",
+              "images/coming-soon_before.png",
+              "images/coming-soon_after.png"
+    ],
     liveUrl: "project.html?id=extended-christmas-map",
     repoUrl: "#",
     primaryButton: "Projekt ansehen",
@@ -288,8 +322,25 @@ const projects = [
     longDescription: "Seit 2020 wurden zahlreiche Mapfixes und Optimierungen durchgeführt, um Stabilität, Performance und Spielerlebnis nachhaltig zu verbessern. Dazu gehören die Behebung von Map Überschneidungen, Fixes für Locked Maps sowie Optimierungen gegen FPS Drops und Crashes. Zusätzlich wurden verschiedenste Collision, Occlusion und Audio Occlusion Bugs überarbeitet und behoben, um eine deutlich sauberere und stabilere Spielerfahrung zu gewährleisten.",
     tech: ["3ds Max", "Codewalker", "Audio Occlusion Tool", "OpenIV", "Paint.NET", "Photoshop", "YTYP Creator"],
     features: ["FPS Optimizing", "Crash fixes", "Occlusion fixes", "Audio Occlusion fixes"],
-    image: "",
-    gallery: [],
+    beforeAfter: [
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      },
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      },
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      }
+    ],
+    image: "images/coming-soon_before.png",
+    gallery: ["images/coming-soon_after.png",
+              "images/coming-soon_before.png",
+              "images/coming-soon_after.png"
+    ],
     liveUrl: "project.html?id=mapfix-optimierung",
     repoUrl: "#",
     primaryButton: "Projekt ansehen",
@@ -306,8 +357,25 @@ const projects = [
     longDescription: "Ein komplett neuer zweistöckiger Burgershot mit modern gestaltetem Verkaufs- und Essbereich im Erdgeschoss sowie einem separaten Partyraum im Obergeschoss. Ergänzt wird die Location durch einen individuell angepassten Parkplatz und einen öffentlichen Sommerbereich für zusätzliche Atmosphäre. Darüber hinaus wurde der gesamte Bereich am Pier vollständig aufgeräumt, von alten Elementen bereinigt und durch neue, optimierte Inhalte ersetzt.",
     tech: ["3ds Max", "Codewalker", "YTYP Creator", "OpenIV", "Paint.NET", "Photoshop"],
     features: ["Überarbeiteter Pier", "Customized Burgershot", "2-Stöckig"],
-    image: "",
-    gallery: [],
+    beforeAfter: [
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      },
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      },
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      }
+    ],
+    image: "images/coming-soon_before.png",
+    gallery: ["images/coming-soon_after.png",
+              "images/coming-soon_before.png",
+              "images/coming-soon_after.png"
+    ],
     liveUrl: "project.html?id=big-burgershot",
     repoUrl: "#",
     primaryButton: "Projekt ansehen",
@@ -324,8 +392,25 @@ const projects = [
     longDescription: "Eine große Auswahl an hochwertigen Custom Props, die speziell für ein detailliertes und immersives Spielerlebnis entwickelt wurden. Alle Assets sind individuell angepasst, performanceoptimiert und fügen sich nahtlos in das Gesamtbild der Map ein. Durch einzigartige Designs, präzise Platzierungen und moderne Details entsteht eine deutlich realistischere und atmosphärischere Spielwelt.",
     tech: ["3ds Max", "OpenIV", "YTYP Creator"],
     features: ["Optimized Props for Emotes"],
-    image: "",
-    gallery: [],
+    beforeAfter: [
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      },
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      },
+      {
+        before: "images/coming-soon_before.png",
+        after: "images/coming-soon_after.png"
+      }
+    ],
+    image: "images/coming-soon_before.png",
+    gallery: ["images/coming-soon_after.png",
+              "images/coming-soon_before.png",
+              "images/coming-soon_after.png"
+    ],
     liveUrl: "project.html?id=custom-properties",
     repoUrl: "#",
     primaryButton: "Projekt ansehen",
