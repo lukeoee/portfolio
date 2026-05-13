@@ -164,6 +164,36 @@
       updateBeforeAfter(50);
     });
 
+
+    if (window.innerWidth <= 850) {
+
+      document.querySelectorAll(".mobile-slider-preview").forEach(preview => {
+
+        const modal = document.querySelector(`#${preview.dataset.modal}`);
+
+        if (!modal) return;
+
+        preview.addEventListener("click", () => {
+          modal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        });
+
+        modal.querySelector(".close-ba-modal").addEventListener("click", () => {
+          modal.classList.remove("active");
+          document.body.style.overflow = "";
+        });
+
+        modal.addEventListener("click", e => {
+          if (e.target === modal) {
+            modal.classList.remove("active");
+            document.body.style.overflow = "";
+          }
+        });
+
+      });
+
+    }
+
     const lightbox = document.querySelector("#lightbox");
     const lightboxImage = document.querySelector("#lightboxImage");
 
