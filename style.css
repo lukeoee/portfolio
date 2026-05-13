@@ -903,19 +903,18 @@ h1 span { color: hsl(var(--hue), 100%, 74%); text-shadow: 0 0 32px hsla(var(--hu
   }
 }
 
-
 /* =========================
-   MOBILE BEFORE/AFTER MODAL
+   MOBILE BEFORE/AFTER PREVIEW MODAL
+   Desktop bleibt unverändert
 ========================= */
 
 .mobile-slider-preview,
-.before-after-modal {
+.before-after-mobile-modal {
   display: none;
 }
 
 @media (max-width: 850px) {
-
-  .desktop-only-slider {
+  #detailGallery > .before-after-slider.mobile-slider-source {
     display: none !important;
   }
 
@@ -924,91 +923,135 @@ h1 span { color: hsl(var(--hue), 100%, 74%); text-shadow: 0 0 32px hsla(var(--hu
     display: block;
     width: 100%;
     height: 320px;
+    padding: 0;
+    border: 1px solid var(--line);
     border-radius: 24px;
     overflow: hidden;
-    border: 1px solid var(--line);
-    background: rgba(0,0,0,.32);
+    background: rgba(0,0,0,.35);
     cursor: pointer;
     grid-column: 1 / -1;
+    box-shadow: 0 24px 70px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.08);
   }
 
   .mobile-slider-preview img {
     width: 100%;
     height: 100%;
+    display: block;
     object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
   }
 
-  .mobile-preview-overlay {
+  .mobile-slider-preview span {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100% - 32px);
+    border-radius: 999px;
+    padding: .72rem 1rem;
+    background: rgba(0,0,0,.58);
+    border: 1px solid rgba(255,255,255,.16);
+    backdrop-filter: blur(12px);
+    color: #fff;
+    font-family: "JetBrains Mono", monospace;
+    font-size: .78rem;
+    font-weight: 800;
+    box-shadow: 0 0 24px hsla(var(--hue), 90%, 58%, .22);
+    z-index: 2;
+  }
+
+  .mobile-slider-preview::after {
+    content: "";
     position: absolute;
     inset: 0;
-    display: flex;
-    align-items: end;
-    justify-content: center;
-    padding-bottom: 1.2rem;
-    background: linear-gradient(to top, rgba(0,0,0,.72), transparent 48%);
+    background:
+      linear-gradient(to top, rgba(0,0,0,.72), transparent 52%),
+      radial-gradient(420px circle at 50% 82%, hsla(var(--hue),100%,65%,.22), transparent 58%);
+    pointer-events: none;
   }
 
-  .mobile-preview-overlay span {
-    border-radius: 999px;
-    padding: .7rem 1rem;
-    background: rgba(0,0,0,.55);
-    border: 1px solid rgba(255,255,255,.14);
-    backdrop-filter: blur(10px);
-    font-family: "JetBrains Mono", monospace;
-    font-weight: 800;
-    font-size: .78rem;
-  }
-
-  .before-after-modal {
+  .before-after-mobile-modal {
     position: fixed;
     inset: 0;
-    z-index: 99999;
-    background: rgba(0,0,0,.92);
-    backdrop-filter: blur(12px);
-    display: flex;
+    z-index: 999999;
+    background: rgba(0,0,0,.94);
+    backdrop-filter: blur(14px);
     align-items: center;
     justify-content: center;
-    padding: 18px;
+    padding: max(18px, env(safe-area-inset-top)) 18px max(18px, env(safe-area-inset-bottom));
     opacity: 0;
     pointer-events: none;
     transition: .2s ease;
   }
 
-  .before-after-modal.active {
+  .before-after-mobile-modal.active {
+    display: flex;
     opacity: 1;
     pointer-events: all;
   }
 
-  .before-after-modal-inner {
+  .before-after-mobile-inner {
     width: 100%;
     position: relative;
   }
 
-  .before-after-modal .before-after-slider {
+  .before-after-mobile-modal .before-after-slider {
     display: block !important;
-    min-height: 72vh !important;
-    max-height: 72vh !important;
+    min-height: min(72vh, 620px) !important;
+    max-height: min(72vh, 620px) !important;
+    border-radius: 24px;
   }
 
-  .before-after-modal .before-after-slider img,
-  .before-after-modal .after-img {
-    min-height: 72vh !important;
-    max-height: 72vh !important;
+  .before-after-mobile-modal .before-after-slider img,
+  .before-after-mobile-modal .after-img {
+    min-height: min(72vh, 620px) !important;
+    max-height: min(72vh, 620px) !important;
+    object-fit: cover;
+  }
+
+  .before-after-mobile-modal .ba-line {
+    width: 1px;
+    background: rgba(255,255,255,.78);
+    box-shadow: 0 0 14px rgba(255,255,255,.36);
+  }
+
+  .before-after-mobile-modal .ba-handle {
+    width: 52px;
+    height: 52px;
+    font-size: .95rem;
+    backdrop-filter: blur(14px);
+  }
+
+  .before-after-mobile-modal .ba-label {
+    top: 14px;
+    font-size: .72rem;
+    padding: .42rem .72rem;
+  }
+
+  .before-after-mobile-modal .ba-before {
+    left: 14px;
+  }
+
+  .before-after-mobile-modal .ba-after {
+    right: 14px;
   }
 
   .close-ba-modal {
     position: absolute;
-    top: -56px;
+    top: -58px;
     right: 0;
     width: 44px;
     height: 44px;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.16);
     background: rgba(255,255,255,.08);
     color: #fff;
     font-size: 1rem;
+    font-weight: 900;
     cursor: pointer;
-    z-index: 10;
+    z-index: 2;
+    backdrop-filter: blur(12px);
   }
-
 }

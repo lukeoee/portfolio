@@ -165,13 +165,63 @@
     });
 
 
-    if (window.innerWidth <= 850) {
+    const isProjectMobile = window.matchMedia("(max-width: 850px)").matches;
 
-      document.querySelectorAll(".mobile-slider-preview").forEach(preview => {
+    if (isProjectMobile && project.beforeAfter) {
+      const mobileSliders = document.querySelectorAll("#detailGallery > .before-after-slider");
 
-        const modal = document.querySelector(`#${preview.dataset.modal}`);
+      mobileSliders.forEach((slider, index) => {
+        slider.classList.add("mobile-slider-source");
 
-        if (!modal) return;
+        const beforeImg = slider.querySelector(".before-img")?.src || "";
+        const afterImg = slider.querySelector(".after-img")?.src || "";
+
+        const preview = document.createElement("button");
+        preview.className = "mobile-slider-preview";
+        preview.type = "button";
+        preview.innerHTML = `
+          <img src="${afterImg}" alt="Vorher / Nachher Vorschau">
+          <span>Vorher / Nachher ansehen</span>
+        `;
+
+        const modal = document.createElement("div");
+        modal.className = "before-after-mobile-modal";
+        modal.innerHTML = `
+          <div class="before-after-mobile-inner">
+            <button class="close-ba-modal" type="button" aria-label="Schließen">✕</button>
+            <div class="before-after-slider mobile-modal-slider">
+              <img class="before-img" src="${beforeImg}" alt="Vorher">
+              <div class="after-wrap">
+                <img class="after-img" src="${afterImg}" alt="Nachher">
+              </div>
+              <input class="ba-range" type="range" min="0" max="100" value="50">
+              <div class="ba-line">
+                <span class="ba-handle">↔</span>
+              </div>
+              <span class="ba-label ba-before">Vorher</span>
+              <span class="ba-label ba-after">Nachher</span>
+            </div>
+          </div>
+        `;
+
+        slider.insertAdjacentElement("beforebegin", preview);
+        document.body.appendChild(modal);
+
+        const modalSlider = modal.querySelector(".before-after-slider");
+        const modalRange = modal.querySelector(".ba-range");
+        const modalAfterWrap = modal.querySelector(".after-wrap");
+        const modalLine = modal.querySelector(".ba-line");
+
+        function updateModalSlider(value) {
+          modalAfterWrap.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+          modalLine.style.left = `${value}%`;
+        }
+
+        modalRange.addEventListener("input", event => {
+          updateModalSlider(event.target.value);
+        });
+
+        updateModalSlider(50);
 
         preview.addEventListener("click", () => {
           modal.classList.add("active");
@@ -183,15 +233,13 @@
           document.body.style.overflow = "";
         });
 
-        modal.addEventListener("click", e => {
-          if (e.target === modal) {
+        modal.addEventListener("click", event => {
+          if (event.target === modal) {
             modal.classList.remove("active");
             document.body.style.overflow = "";
           }
         });
-
       });
-
     }
 
     const lightbox = document.querySelector("#lightbox");
