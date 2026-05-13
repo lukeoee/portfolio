@@ -1,3 +1,10 @@
+const isMobileDevice =
+  window.matchMedia("(max-width: 850px), (hover: none), (pointer: coarse)").matches;
+
+if (isMobileDevice) {
+  document.documentElement.classList.add("mobile-device");
+}
+
 let targetX = window.innerWidth / 2;
 let targetY = window.innerHeight / 3;
 let currentX = targetX;
@@ -122,7 +129,7 @@ function drawNetwork() {
   ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
   const hue = currentHue || 265;
 
-  if (pointer.active) breakNetworkNearCursor();
+  if (!isMobileDevice && pointer.active) breakNetworkNearCursor();
 
   const now = performance.now();
   const rebuildDelay = 10000;
@@ -185,8 +192,8 @@ function drawNetwork() {
 }
 
 window.addEventListener("resize", resizeNetwork);
-window.addEventListener("pointerdown", () => { pointer.active = true; });
-window.addEventListener("pointerup", () => { pointer.active = false; });
+if (!isMobileDevice) window.addEventListener("pointerdown", () => { pointer.active = true; });
+if (!isMobileDevice) window.addEventListener("pointerup", () => { pointer.active = false; });
 
 function setCursorTarget(event) {
   targetX = event.clientX;
@@ -199,7 +206,7 @@ function setCursorTarget(event) {
   targetHue = Math.round(210 + xRatio * 120 + yRatio * 35);
 }
 
-window.addEventListener("pointermove", setCursorTarget);
+if (!isMobileDevice) window.addEventListener("pointermove", setCursorTarget);
 
 function animateCursorBackground() {
   currentX += (targetX - currentX) * 0.13;
@@ -217,6 +224,7 @@ resizeNetwork();
 drawNetwork();
 
 function attachInteractiveGlow() {
+  if (isMobileDevice) return;
   document.querySelectorAll(".project-card, .hero-card, .skills-grid span").forEach(element => {
     element.addEventListener("pointermove", event => {
       const rect = element.getBoundingClientRect();
