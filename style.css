@@ -1055,3 +1055,27 @@ h1 span { color: hsl(var(--hue), 100%, 74%); text-shadow: 0 0 32px hsla(var(--hu
     backdrop-filter: blur(12px);
   }
 }
+
+/* =========================
+   MOBILE MODAL IMAGE FIT FIX
+========================= */
+
+@media (max-width: 850px) {
+  .before-after-mobile-modal .before-after-slider {
+    min-height: min(72vh, 620px) !important;
+    max-height: min(72vh, 620px) !important;
+    background: rgba(0,0,0,.72);
+  }
+
+  .before-after-mobile-modal .before-after-slider img,
+  .before-after-mobile-modal .before-img,
+  .before-after-mobile-modal .after-img {
+    object-fit: contain !important;
+    object-position: center center !important;
+    background: rgba(0,0,0,.72);
+  }
+
+  .before-after-mobile-modal .after-wrap {
+    background: rgba(0,0,0,.72);
+  }
+}
